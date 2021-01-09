@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyTravelBlogs.Models;
 
 namespace MyTravelBlogs
 {
@@ -32,6 +34,8 @@ namespace MyTravelBlogs
             });
 
             services.AddMvc();
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=BlogDb;Trusted_Connection=true";
+            services.AddDbContext<MyContext>(options => options.UseSqlServer(connection));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
