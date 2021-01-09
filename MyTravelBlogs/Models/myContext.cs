@@ -12,6 +12,7 @@ namespace MyTravelBlogs.Models
         {
 
         }
+
         public DbSet<Aboutme> Aboutme { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Blog> blogs { get; set; }
