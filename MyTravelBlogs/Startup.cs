@@ -31,7 +31,7 @@ namespace MyTravelBlogs
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -47,7 +47,7 @@ namespace MyTravelBlogs
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            app.UseMvc();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -56,7 +56,7 @@ namespace MyTravelBlogs
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Homepage}/{action=Home}/{id?}");
             });
         }
     }
