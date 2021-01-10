@@ -13,6 +13,7 @@ namespace MyTravelBlogs.Models
         public string userName { get; set; }
         public string mail { get; set; }
         public string commentContent { get; set; }
+        public DateTime date { get; set; }
         public int BlogId { get; set; }
         public virtual Blog blog { get; set; }
     }

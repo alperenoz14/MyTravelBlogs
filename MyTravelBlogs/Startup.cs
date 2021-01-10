@@ -32,7 +32,7 @@ namespace MyTravelBlogs
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddSession();
             services.AddMvc();
             var connection = @"Server=(localdb)\mssqllocaldb;Database=BlogDb;Trusted_Connection=true";
             services.AddDbContext<MyContext>(options => options.UseSqlServer(connection));
@@ -51,6 +51,7 @@ namespace MyTravelBlogs
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseMvc();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
