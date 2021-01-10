@@ -10,7 +10,7 @@ namespace MyTravelBlogs.Models
     {
         [Key]
         public int commentId { get; set; }
-        public int userName { get; set; }
+        public string userName { get; set; }
         public string mail { get; set; }
         public string commentContent { get; set; }
         public int BlogId { get; set; }

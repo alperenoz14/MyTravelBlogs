@@ -18,7 +18,13 @@ namespace MyTravelBlogs.Controllers
         public IActionResult BlogDetail(int id)
         {
             var blogDetail = _myContext.blogs.Where(x => x.blogId == id).ToList();
-            return View(blogDetail);
+            var comments = _myContext.comments.Where(x => x.BlogId == id).ToList();
+            var model = new Model();
+            model.Blogs = blogDetail;
+            model.Comments = comments;
+            return View(model);
         }
+
+
     }
 }
