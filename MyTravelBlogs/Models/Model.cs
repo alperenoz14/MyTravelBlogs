@@ -9,6 +9,7 @@ namespace MyTravelBlogs.Models
     {
         public List<Blog> Blogs { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<Blog> Blog { get; set; }
         public Comment Comment { get; set; }
     }
 }

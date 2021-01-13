@@ -18,8 +18,11 @@ namespace MyTravelBlogs.Controllers
         public IActionResult Blogs()
         {
             var blogs = _myContext.blogs.ToList();
-            return View(blogs);
-            
+            var lastBlog = _myContext.blogs.OrderByDescending(x => x.blogId).Take(1).ToList();
+            var model = new Model();
+            model.Blogs = blogs;
+            model.Blog = lastBlog;
+            return View(model);
         }
     }
 }

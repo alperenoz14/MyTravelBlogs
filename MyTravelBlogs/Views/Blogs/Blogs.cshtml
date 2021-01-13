@@ -1,4 +1,4 @@
-﻿@model List<Blog>
+﻿@model MyTravelBlogs.Models.Model
 
 @{
     Layout = "~/Views/Shared/_myLayout.cshtml";
@@ -8,14 +8,14 @@
 <div class="col-md-9 main">
     <!--banner-section-->
     <div class="banner-section">
-        @foreach (var blog in Model)
+        @foreach (var blog in Model.Blogs)
         {
             <h3 class="tittle">@blog.title</h3>
             <div class="single">
                 <img src="@blog.blogImage" class="img-responsive" alt="" />
                 <div class="b-bottom">
                     <h5 class="top"><a href="~/Blogdetail/Blogdetail/@blog.blogId">@blog.title</a></h5>
-                    <p class="sub">@blog.blogContent.Substring(0,100) <a href="~/Blogdetail/BlogDetail/@blog.blogId"><b>Devamını Oku</b></a></p>
+                    <p class="sub">@blog.blogContent.Substring(0, 100) <a href="~/Blogdetail/BlogDetail/@blog.blogId"><b>Devamını Oku</b></a></p>
                     <p>@blog.blogDate <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a></p>
 
                 </div>
@@ -31,64 +31,67 @@
     <!--//banner-->
     <!--//banner-section-->
     <div class="banner-right-text">
-        <h3 class="tittle">belki bu bloga ait fotolar  <i class="glyphicon glyphicon-facetime-video"></i></h3>
-        <!--/general-news-->
-        <div class="general-news">
-            <div class="general-inner">
-                <div class="general-text">
-                    <a href="#"><img src="~/web/images/gen1.jpg" class="img-responsive" alt=""></a>
-                    <h5 class="top"><a href="#">Consetetur sadipscing elit</a></h5>
-                    <p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt labore dolore magna aliquyam eratsed diam justo duo dolores rebum.</p>
-                    <p>On Jun 25 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
-                </div>
-                <div class="edit-pics">
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f4.jpg" class="img-responsive" alt="">
-
-                        </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
+        <h3 class="tittle">Son Eklenen Blog</h3>
+        @foreach (var lastBlog in Model.Blog)
+        {
+            <h2 class="top"><a href="~/BlogDetail/BlogDetail/@lastBlog.blogId">@lastBlog.title</a></h2>
+            <div class="general-news">
+                <div class="general-inner">
+                    <div class="general-text">
+                        <a href="#"><img src="@lastBlog.blogImage" class="img-responsive" alt=""></a>
+                        <h5 class="top"><a href="~/Blogdetail/BlogDetail/@lastBlog.blogId">@lastBlog.title</a></h5>
+                        <p class="sub">@lastBlog.blogContent.Substring(0, 100) <a href="~/Blogdetail/BlogDetail/@lastBlog.blogId"><b>Devamını Oku</b></a></p>
+                        <p>@lastBlog.blogDate<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>56 </a><a class="span_link" href="#"></a></p>
                     </div>
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f1.jpg" class="img-responsive" alt="">
+                    <div class="edit-pics">
+                        <div class="editor-pics">
+                            <div class="col-md-3 item-pic">
+                                <img src="~/web/images/f4.jpg" class="img-responsive" alt="">
 
+                            </div>
+                            <div class="col-md-9 item-details">
+                                <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
+                                <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f1.jpg" class="img-responsive" alt="">
+                        <div class="editor-pics">
+                            <div class="col-md-3 item-pic">
+                                <img src="~/web/images/f1.jpg" class="img-responsive" alt="">
 
+                            </div>
+                            <div class="col-md-9 item-details">
+                                <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
+                                <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f4.jpg" class="img-responsive" alt="">
+                        <div class="editor-pics">
+                            <div class="col-md-3 item-pic">
+                                <img src="~/web/images/f1.jpg" class="img-responsive" alt="">
 
+                            </div>
+                            <div class="col-md-9 item-details">
+                                <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
+                                <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+                        <div class="editor-pics">
+                            <div class="col-md-3 item-pic">
+                                <img src="~/web/images/f4.jpg" class="img-responsive" alt="">
+
+                            </div>
+                            <div class="col-md-9 item-details">
+                                <h5 class="inner two"><a href="#">New iPad App to simulate your Guitar</a></h5>
+                                <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
         <!--//general-news-->
         <!--/news-->
         <!--/news-->
