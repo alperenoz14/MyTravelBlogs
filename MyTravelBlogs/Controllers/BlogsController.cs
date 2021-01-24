@@ -17,7 +17,7 @@ namespace MyTravelBlogs.Controllers
         }
         public IActionResult Blogs()
         {
-            var blogs = _myContext.blogs.ToList();
+            var blogs = _myContext.blogs.OrderByDescending(x => x.blogId).ToList();
             var lastBlog = _myContext.blogs.OrderByDescending(x => x.blogId).Take(1).ToList();
             var model = new Model();
             model.Blogs = blogs;
