@@ -25,7 +25,7 @@ namespace MyTravelBlogs.Controllers
             model.Blogs2 = lastBlog;
             model.Blogs = places;
             model.Blogs3 = lastBlogs;
-            return View();
+            return View(model);
         }
     }
 }
