@@ -104,61 +104,32 @@
 
         <div class="general-news">
             <div class="general-inner">
-                @foreach (var blog in Model.Blogs2)
+                @foreach (var lastBlog in Model.Blogs2)
                 {
                     <div class="general-text">
-                        <a href="single.html"><img src="@blog.blogImage" class="img-responsive" alt=""></a>
-                        <h5 class="top"><a href="~/Blogdetail/Blogdetail/@blog.blogId">@blog.title</a></h5>
-                        <p>@blog.blogContent.Substring(0, 100) <a href="~/Blogdetail/BlogDetail/@blog.blogId"><b>Devamını Oku</b></a></p>
-                        <p>@blog.blogDate<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"></a></p>
+                        <a href="single.html"><img src="@lastBlog.blogImage" class="img-responsive" alt=""></a>
+                        <h5 class="top"><a href="~/Blogdetail/Blogdetail/@lastBlog.blogId">@lastBlog.title</a></h5>
+                        <p>@lastBlog.blogContent.Substring(0, 100) <a href="~/Blogdetail/BlogDetail/@lastBlog.blogId"><b>Devamını Oku</b></a></p>
+                        <p>@lastBlog.blogDate<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"></a></p>
                     </div>
                 }
-                <div class="edit-pics">
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f4.jpg" class="img-responsive" alt="">
-
+                <br /><br />
+                    <h1 class="tittle">Bloglar </h1>
+                @foreach (var blog in Model.Blogs)
+                {
+                    <div class="edit-pics">
+                        <div class="editor-pics">
+                            <div class="col-md-3 item-pic">
+                                <img src="@blog.blogImage" class="img-responsive" alt="">
+                            </div>
+                            <div class="col-md-9 item-details">
+                                <h5 class="inner two"><a href="~/Blogdetail/Blogdetail/@blog.blogId">@blog.title</a></h5>
+                                <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>@blog.blogDate<a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="single.html">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f1.jpg" class="img-responsive" alt="">
-
-                        </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="single.html">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f1.jpg" class="img-responsive" alt="">
-
-                        </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="single.html">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="editor-pics">
-                        <div class="col-md-3 item-pic">
-                            <img src="~/web/images/f4.jpg" class="img-responsive" alt="">
-
-                        </div>
-                        <div class="col-md-9 item-details">
-                            <h5 class="inner two"><a href="single.html">New iPad App to simulate your Guitar</a></h5>
-                            <div class="td-post-date two"><i class="glyphicon glyphicon-time"></i>Feb 22, 2015 <a href="#"><i class="glyphicon glyphicon-comment"></i>0 </a></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
