@@ -22,6 +22,7 @@ namespace MyTravelBlogs.Controllers
             var blogDetail = _myContext.blogs.Where(x => x.blogId == id).ToList();
             var comments = _myContext.comments.Where(x => x.BlogId == id).ToList();
             var lastBlogs = _myContext.blogs.OrderByDescending(x => x.blogId).Take(3).ToList(); //blog sayisi artınca son 5 blog alınacak...
+            //blog sayfası altında boşluk var footer ayarlanacak...
             var model = new Model();
             model.Blogs = blogDetail;
             model.Comments = comments;
