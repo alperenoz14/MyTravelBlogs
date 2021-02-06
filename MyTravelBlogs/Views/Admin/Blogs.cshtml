@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Blog>
 @{
     ViewData["Title"] = "Blogs";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
@@ -10,34 +10,21 @@
             <tr style="background-color: gray">
                 <th>ID</th>
                 <th>BAŞLIK</th>
-                <th>TARİH</th>
                 <th>SİL</th>
                 <th>GÜNCELLE</th>
             </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>test id</td>
-            <td>test başlık</td>
-            <td>test tarih</td>
-            <td>test sil </td>
-            <td>test güncelle</td>
-        </tr>
-        <tr>
-            <td>test id</td>
-            <td>test başlık</td>
-            <td>test tarih</td>
-            <td>test sil </td>
-            <td>test güncelle</td>
-        </tr>
-        <tr >
-            <td>test id</td>
-            <td>test başlık</td>
-            <td>test tarih</td>
-            <td>test sil </td>
-            <td>test güncelle</td>
-        </tr>
-            </tbody>
+            @foreach (var blog in Model)
+            {
+                <tr>
+                    <td>@blog.blogId</td>
+                    <td>@blog.title</td>
+                    <td><a href="#" class="btn btn-danger">SİL</a></td>
+                    <td><a href="#" class="btn btn-warning">GÜNCELLE</a></td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>
 
