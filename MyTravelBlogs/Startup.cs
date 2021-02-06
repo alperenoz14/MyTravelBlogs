@@ -61,7 +61,7 @@ namespace MyTravelBlogs
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Homepage}/{action=Home}/{id?}");
+                    template: "{controller=Admin}/{action=Blogs}/{id?}");
             });
         }
     }

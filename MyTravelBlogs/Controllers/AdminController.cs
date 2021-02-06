@@ -8,6 +8,7 @@ namespace MyTravelBlogs.Controllers
 {
     public class AdminController : Controller
     {
+        
         public IActionResult Blogs()
         {
             return View();
