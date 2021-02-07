@@ -1,0 +1,30 @@
+﻿@model MyTravelBlogs.Models.Blog
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <h2 style="margin-top: 25px">Yeni Blog Ekle</h2>
+    <form asp-controller="Admin" asp-action="Add">
+        <div class="form-group">
+            <label style="margin-top: 10px"><h5>Başlık</h5></label>
+            <input asp-for="title" type="text" class="form-control" placeholder="Başlık" />
+        </div>
+        <div class="form-group">
+            <label><h5>Blog İçeriği</h5></label>
+            <textarea asp-for="blogContent" style="height: 130px" type="text" class="form-control" placeholder="Blog İçeriği"></textarea>
+        </div>
+        <div class="form-group">
+            <label><h5>Tarih</h5></label>
+            <input asp-for="blogDate" type="text" class="form-control" placeholder="@DateTime.Now.ToString("MM/dd/yyyy")" disabled />
+        </div>
+        <div class="form-group">
+            <label><h5>Blog Resmi</h5></label>
+            <input asp-for="blogImage" type="text" class="form-control" placeholder="Resim Linki(hizliResim)"/>
+        </div>
+        <div style="margin-top: 25px">
+            <button style="width: 100px" type="submit" class="btn btn-success">EKLE</button>
+        </div>
+    </form>
+</div>

@@ -20,11 +20,14 @@
                 <tr>
                     <td>@blog.blogId</td>
                     <td>@blog.title</td>
-                    <td><a href="#" class="btn btn-danger">SİL</a></td>
-                    <td><a href="#" class="btn btn-warning">GÜNCELLE</a></td>
+                    <td><a asp-action="Delete" asp-controller="Admin" asp-route-blogId="@blog.blogId"  class="btn btn-danger">SİL</a></td>
+                    <td><a href="~/Admin/Update/@blog.blogId" class="btn btn-warning">GÜNCELLE</a></td>
                 </tr>
             }
         </tbody>
     </table>
+    <div style="margin-left: 500px">
+        <a href="~/Admin/Add" class="btn btn-success">Yeni Blog Ekle</a>
+    </div>
 </div>
 

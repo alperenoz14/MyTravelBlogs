@@ -17,18 +17,36 @@ namespace MyTravelBlogs.Controllers
 
         public IActionResult Blogs()
         {
-            var blogs = _myContext.blogs.ToList();
+            var blogs = _myContext.blogs.OrderByDescending(x => x.blogId).ToList();
             return View(blogs);
         }
 
-        public IActionResult Update()
+        [HttpGet]
+        public IActionResult Add()
         {
             return View();
         }
 
-        public IActionResult Add()
+        [HttpPost]
+        public IActionResult Add(Blog blog)
+        {
+            blog.blogDate = DateTime.Now;
+            _myContext.blogs.Add(blog);
+            _myContext.SaveChanges();
+            return RedirectToAction("Blogs","Admin");
+        }
+
+        public IActionResult Update(int id)
         {
             return View();
+        }
+        
+        public IActionResult Delete(int blogId)
+        {
+            var blog = _myContext.blogs.Find(blogId); //silme işleminden sonra "blog silindi !! gibi bir alert?"
+            _myContext.blogs.Remove(blog);
+            _myContext.SaveChanges();
+            return RedirectToAction("Blogs", "Admin");
         }
     }
 }
