@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyTravelBlogs.Models;
 
@@ -38,12 +39,26 @@ namespace MyTravelBlogs.Controllers
 
         public IActionResult Update(int id)
         {
-            return View();
+            HttpContext.Session.SetInt32("blogId", id);
+            var blog = _myContext.blogs.Find(id);
+            return View(blog);
         }
         
+        [HttpPost]
+        public IActionResult Update(Blog blog)
+        {
+            var id = HttpContext.Session.GetInt32("blogId");    //updated alert!!?...
+            var UpdatedBlog = _myContext.blogs.Find(id);
+            UpdatedBlog.title = blog.title;
+            UpdatedBlog.blogContent = blog.blogContent;
+            UpdatedBlog.blogImage = blog.blogImage;
+            _myContext.SaveChanges();
+            return RedirectToAction("Blogs", "Admin");
+        }
+
         public IActionResult Delete(int blogId)
         {
-            var blog = _myContext.blogs.Find(blogId); //silme işleminden sonra "blog silindi !! gibi bir alert?"
+            var blog = _myContext.blogs.Find(blogId); //silme işleminden sonra "blog silindi !! gibi bir alert?"...
             _myContext.blogs.Remove(blog);
             _myContext.SaveChanges();
             return RedirectToAction("Blogs", "Admin");
