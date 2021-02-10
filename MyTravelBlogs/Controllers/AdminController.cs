@@ -63,5 +63,11 @@ namespace MyTravelBlogs.Controllers
             _myContext.SaveChanges();
             return RedirectToAction("Blogs", "Admin");
         }
+
+        //comments will be listed and user can be delete...
+        public IActionResult Comments()
+        {            
+            return View();
+        }
     }
 }
