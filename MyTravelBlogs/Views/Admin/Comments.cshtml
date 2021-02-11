@@ -1,27 +1,28 @@
-﻿@model List<Blog>
+﻿@model List<Comment>
 @{
-    ViewData["Title"] = "Blogs";
+    ViewData["Title"] = "Comments";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
-<h2 style="margin-top: 25px">BLOGLAR</h2>
+
+<h2 style="margin-top: 25px">YORUMLAR</h2>
 <div>
     <table class="table table-bordered table-striped table-dark table-hover">
         <thead>
             <tr style="background-color: gray">
                 <th>KULLANICI ADI</th>
                 <th>YORUM</th>
+                <th>YORUM TARİHİ</th>
                 <th>SİL</th>
-                <th>GÜNCELLE</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var blog in Model)
+            @foreach (var comment in Model)
             {
                 <tr>
-                    <td>@blog.blogId</td>
-                    <td>@blog.title</td>
-                    <td><a asp-action="Delete" asp-controller="Admin" asp-route-blogId="@blog.blogId" class="btn btn-danger">SİL</a></td>
-                    <td><a href="~/Admin/Update/@blog.blogId" class="btn btn-warning">GÜNCELLE</a></td>
+                    <td>@comment.userName</td>
+                    <td>@comment.commentContent</td>
+                    <td>@comment.date</td>
+                    <td><a asp-action="DeleteComment" asp-controller="Admin" asp-route-commentId="@comment.commentId" class="btn btn-danger">SİL</a></td>
                 </tr>
             }
         </tbody>

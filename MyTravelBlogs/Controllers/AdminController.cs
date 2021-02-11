@@ -66,8 +66,17 @@ namespace MyTravelBlogs.Controllers
 
         //comments will be listed and user can be delete...
         public IActionResult Comments()
-        {            
-            return View();
+        {
+            var comments = _myContext.comments.OrderByDescending(x => x.commentId).ToList();
+            return View(comments);
+        }
+
+        public IActionResult DeleteComment(int commentId)
+        {
+            var comment =_myContext.comments.Find(commentId);  //yorum silindi!! gibi bir alert...
+            _myContext.comments.Remove(comment);
+            _myContext.SaveChanges();
+            return RedirectToAction("Comments", "Admin");
         }
     }
 }
