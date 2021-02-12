@@ -16,6 +16,11 @@ namespace MyTravelBlogs.Controllers
             _myContext = myContext;
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         public IActionResult Blogs()
         {
             var blogs = _myContext.blogs.OrderByDescending(x => x.blogId).ToList();
