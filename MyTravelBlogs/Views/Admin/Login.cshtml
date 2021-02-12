@@ -1,4 +1,4 @@
-﻿
+﻿@model MyTravelBlogs.Models.Admin
 @{
     Layout = null;
 }
@@ -11,6 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>
 <html lang="zxx">
+
 
 <head>
     <title>Mentorum Login</title>
@@ -43,24 +44,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!-- form starts here -->
             <form>
                 <div class="agile-field-txt">
-                    <input  type="email" name="email" placeholder="E-mail" required="" />
+                    <input asp-for="email" type="email" name="email" placeholder="E-mail" required="" />
                 </div>
                 <div class="agile-field-txt">
-                    <input  type="password" name="password" placeholder="******" required="" id="myInput" />
-                    <div class="agile_label">
-                        <input id="check3" name="check3" type="checkbox" value="sifreyi göster">
-                        <label class="check" for="check3">Beni Hatırla</label>
-                        <div class="agile2_label">
-                            <label class="check" style="color: white"><a href="#">Sifremi Unuttum</a></label>
-                        </div>
-                    </div>
+                    <input asp-for="password" type="password" name="password" placeholder="******" required="" id="myInput" />
+
                 </div>
                 <div class="w3ls-bot">
                     <input type="submit" style="margin-top: -10px" value="GİRİS">
                 </div>
             </form>
-            <form style="margin-top: -100px" action="~/Signup/Signup">
-                <input width="100" style="margin-top: 10px" type="submit" value="KAYIT OL !">
+            <form style="margin-top: -100px" action="mailto:alperenoz1464@gmail.com">
+                <div class="w3ls-bot">
+                    <input width="100" style="margin-top: 10px" type="submit" value="Ben de Blog Yazmak İstiyorum!">
+                </div>
             </form>
         </div>
 

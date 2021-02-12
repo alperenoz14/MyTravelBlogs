@@ -16,8 +16,24 @@ namespace MyTravelBlogs.Controllers
             _myContext = myContext;
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(Admin admin)
+        {
+            var admn = _myContext.Admins.ToList();
+            foreach (var a in admn)
+            {
+                if (admin.email == a.email && admin.password == a.password)
+                {
+                    //role assignment operations...
+                    //startup configurations for authorization&authantication (login path vs.)...
+                }
+            }
             return View();
         }
 
