@@ -8,7 +8,12 @@ namespace MyTravelBlogs.Controllers
 {
     public class AboutController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Aboutme()
         {
             return View();
         }

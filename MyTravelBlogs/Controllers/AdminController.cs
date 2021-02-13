@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyTravelBlogs.Models;
 
 namespace MyTravelBlogs.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly MyContext _myContext;
@@ -16,12 +21,14 @@ namespace MyTravelBlogs.Controllers
             _myContext = myContext;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login(Admin admin)
         {
@@ -30,11 +37,22 @@ namespace MyTravelBlogs.Controllers
             {
                 if (admin.email == a.email && admin.password == a.password)
                 {
-                    //role assignment operations...
-                    //startup configurations for authorization&authantication (login path vs.)...
+                    HttpContext.Session.SetInt32("adminId", admin.adminId);
+                    ClaimsIdentity identity = null;
+                    identity = new ClaimsIdentity(new[]
+                    {
+                        new Claim(ClaimTypes.Role,"Admin")
+                    }, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(identity);
+                    var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    return RedirectToAction("Blogs", "Admin");
+                }
+                else
+                {
+                    return StatusCode(404, "Admin Bulunamadi!");
                 }
             }
-            return View();
+            return StatusCode(404);
         }
 
         public IActionResult Blogs()
@@ -98,6 +116,13 @@ namespace MyTravelBlogs.Controllers
             _myContext.comments.Remove(comment);
             _myContext.SaveChanges();
             return RedirectToAction("Comments", "Admin");
+        }
+
+        [HttpPost]
+        public IActionResult Signout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Admin");
         }
     }
 }
