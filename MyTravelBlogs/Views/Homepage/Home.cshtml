@@ -107,7 +107,7 @@
                 @foreach (var lastBlog in Model.Blogs2)
                 {
                     <div class="general-text">
-                        <a href="single.html"><img src="@lastBlog.blogImage" class="img-responsive" alt=""></a>
+                        <a href="~/Blogdetail/BlogDetail/@lastBlog.blogId"><img src="@lastBlog.blogImage" class="img-responsive" alt=""></a>
                         <h5 class="top"><a href="~/Blogdetail/Blogdetail/@lastBlog.blogId">@lastBlog.title</a></h5>
                         <p>@lastBlog.blogContent.Substring(0, 100)<a href="~/Blogdetail/BlogDetail/@lastBlog.blogId"><b>Devamını Oku</b></a></p>
                         <p>@lastBlog.blogDate<a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"></a></p>

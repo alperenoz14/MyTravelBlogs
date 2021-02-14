@@ -49,7 +49,7 @@ namespace MyTravelBlogs.Controllers
                 }
                 else
                 {
-                    return StatusCode(404, "Admin Bulunamadi!");
+                    return StatusCode(404, "ADMİN BULUNAMADI!");
                 }
             }
             return StatusCode(404);
