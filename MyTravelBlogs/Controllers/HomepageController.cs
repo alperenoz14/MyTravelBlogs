@@ -29,5 +29,10 @@ namespace MyTravelBlogs.Controllers
             model.Blogs3 = lastBlogs;
             return View(model);
         }
+
+        public IActionResult Gallery()
+        {
+            return View();
+        }
     }
 }
