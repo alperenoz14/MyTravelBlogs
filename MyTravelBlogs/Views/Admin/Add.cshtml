@@ -4,8 +4,15 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
+<style>
+    .border{
+        border-bottom: 3px solid red;
+        background-color: darkseagreen;
+    }
+</style>
+
 <div class="col-md-9">
-    <h2 style="margin-top: 25px">Yeni Blog Ekle</h2>
+    <h2 style="margin-top: 25px" class="border">Yeni Blog Ekle</h2>
     <form asp-controller="Admin" asp-action="Add">
         <div class="form-group">
             <label style="margin-top: 10px"><h5>Başlık</h5></label>

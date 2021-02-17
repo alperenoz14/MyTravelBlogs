@@ -118,6 +118,12 @@ namespace MyTravelBlogs.Controllers
             return RedirectToAction("Comments", "Admin");
         }
 
+        public IActionResult Detail(int id)
+        {
+            var blog = _myContext.blogs.Find(id);
+            return View(blog);
+        }
+
         [HttpPost]
         public IActionResult Signout()
         {

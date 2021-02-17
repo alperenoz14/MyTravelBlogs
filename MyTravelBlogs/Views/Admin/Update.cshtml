@@ -3,20 +3,28 @@
     ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
-
+<style>
+    .border1 {
+        border-bottom: 3px solid red;
+        background-color: darkseagreen;
+    }
+    .border2 {
+        border-bottom: 5px solid black;
+    }
+</style>
 <div class="col-md-9">
-    <h2 style="margin-top: 25px">Blog Güncelle</h2>
+    <br />
     <form asp-controller="Admin" asp-action="Update">
         <div class="form-group">
-            <label style="margin-top: 10px"><h5>Başlık</h5></label>
+            <label style="margin-top: 10px"><h3 class="border1">Başlık</h3></label>
             <input asp-for="title" type="text" class="form-control" placeholder="@Model.title" />
         </div>
         <div class="form-group">
-            <label><h5>Blog İçeriği</h5></label>
-            <textarea asp-for="blogContent" style="height: 130px" type="text" class="form-control" placeholder="@Model.blogContent"></textarea>
+            <label><h3 class="border1">Blog İçeriği</h3></label>
+            <textarea asp-for="blogContent" style="height: 170px" type="text" class="form-control" placeholder="@Model.blogContent"></textarea>
         </div>
         <div class="form-group">
-            <label><h5>Blog Resmi</h5></label>
+            <label><h3 class="border1">Blog Resmi</h3></label>
             <input asp-for="blogImage" type="text" class="form-control" placeholder="@Model.blogImage" />
         </div>
         <div style="margin-top: 25px">

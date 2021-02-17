@@ -8,26 +8,28 @@
     <table class="table table-bordered table-striped table-dark table-hover">
         <thead>
             <tr style="background-color: gray">
-                <th>KULLANICI ADI</th>
-                <th>YORUM</th>
+                <th>BLOG ID</th>
+                <th>BAŞLIK</th>
                 <th>SİL</th>
                 <th>GÜNCELLE</th>
+                <th>DETAY</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var blog in Model)
             {
-                <tr>
-                    <td>@blog.blogId</td>
-                    <td>@blog.title</td>
-                    <td><a asp-action="Delete" asp-controller="Admin" asp-route-blogId="@blog.blogId" class="btn btn-danger">SİL</a></td>
-                    <td><a href="~/Admin/Update/@blog.blogId" class="btn btn-warning">GÜNCELLE</a></td>
-                </tr>
+            <tr>
+                <td>@blog.blogId</td>
+                <td>@blog.title</td>
+                <td><a asp-action="Delete" asp-controller="Admin" asp-route-blogId="@blog.blogId" class="btn btn-danger">SİL</a></td>
+                <td><a href="~/Admin/Update/@blog.blogId" class="btn btn-warning">GÜNCELLE</a></td>
+                <td><a href="~/Admin/Detail/@blog.blogId" class="btn btn-default">DETAY</a></td>
+            </tr>
             }
         </tbody>
     </table>
     <div style="margin-left: 500px">
-        <a href="~/Admin/Blogs" class="btn btn-success">Bloglara Dön</a>
+        <a href="~/Admin/Add" style="width: 125px" class="btn btn-success">Yeni Blog Ekle</a>
     </div>
 </div>
 
